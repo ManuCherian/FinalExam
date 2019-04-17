@@ -56,22 +56,30 @@ namespace VbFinal.Tests.Controllers
             Assert.AreEqual("Index", result.ViewName);
         }
 
+        [TestMethod]
         public void IndexValidLoadsVbPlayers()
         {
-            //act 
+            // act
+            // call the index method
+            // access the data model returned to the view
+            // cast the data as a list of type Category
+            var results = (List<VbPlayer>)((ViewResult)controller.Index()).Model;
 
-
-            //assert
-
+            // assert
+            CollectionAssert.AreEqual(vbPlayers.OrderBy(c => c.FirstName).ToList(), results);
 
         }
 
+
+        [TestMethod]
         public void EditLoadsValidId()
         {
             //act 
 
+            var results = (List<VbPlayer>)((ViewResult)controller.Edit(1)).Model;
 
-            //assert
+            // assert
+            CollectionAssert.AreEqual(vbPlayers, results);
 
 
         }
@@ -89,8 +97,11 @@ namespace VbFinal.Tests.Controllers
         {
             //act 
 
+            var results = (List<VbPlayer>)((ViewResult)controller.Edit(1)).Model;
 
-            //assert
+            // assert
+            CollectionAssert.AreEqual(vbPlayers, results);
+            
 
 
         }

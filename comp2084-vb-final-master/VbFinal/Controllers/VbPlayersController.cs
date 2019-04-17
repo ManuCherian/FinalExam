@@ -10,6 +10,7 @@ using VbFinal.Models;
 
 namespace VbFinal.Controllers
 {
+    [Route("api/[controller]")]
     [Authorize]
     public class VbPlayersController : Controller
     {
@@ -32,7 +33,7 @@ namespace VbFinal.Controllers
         public ActionResult Index()
         {
             var vbPlayers = db.VbPlayers;
-            return View("index",vbPlayers.ToList());
+            return View("Index",vbPlayers.ToList());
         }
 
         // GET: VbPlayers/Details/5
